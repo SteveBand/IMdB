@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { SingleMovie } from './components/singleMovie';
 import { HomePage } from './flows/homePage';
 
 
@@ -9,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/movie:id" />
+        <Route path="/movies/:id" element={<SingleMovie />} />
       </Routes>
     </BrowserRouter>
   );
