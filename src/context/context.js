@@ -1,8 +1,9 @@
 import { queryByRole } from '@testing-library/react';
 import React, { useState, useEffect, useContext } from 'react';
 
+export const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`
+export const noImg = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637';
 
-const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`
 export const MoviesContext = React.createContext();
 export const MoviesProvier = ({ children }) => {
     const [movies, setMovies] = useState([]);
@@ -13,6 +14,7 @@ export const MoviesProvier = ({ children }) => {
         msg: '',
     })
     const handleFetch = async (url) => {
+        setLoading(true);
         try {
             const response = await fetch(url);
             const data = await response.json()
@@ -27,8 +29,11 @@ export const MoviesProvier = ({ children }) => {
     }
 
     useEffect(() => {
-        handleFetch(`${API_ENDPOINT}&s=${query}`);
-        console.log(API_ENDPOINT)
+        if (query) {
+            handleFetch(`${API_ENDPOINT}&s=${query}`);
+        } else {
+            setLoading(false);
+        }
     }, [query])
 
     return (

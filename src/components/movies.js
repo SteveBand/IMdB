@@ -2,10 +2,17 @@ import { findByTitle, getByTitle } from '@testing-library/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import { useGlobalContext } from '../context/context';
+import { useGlobalContext, noImg } from '../context/context';
+
 
 export const Movies = () => {
     const { movies, setLoading, loading } = useGlobalContext();
+    
+    if (loading) {
+        return (
+            <Loading />
+        )
+    }
 
     return (
         <Wrapper>
@@ -13,7 +20,7 @@ export const Movies = () => {
                 const { Title: title, Year: year, imdbID: id, Poster: img } = movie;
                 return (
                     <Link className='movie-card' to={`/movies/${id}`} key={id}>
-                        <img src={img} alt={title} />
+                        <img src={img === 'N/A' ? noImg : img} alt={title} />
                         <div className='movie-info'>
                             <h4>{title}</h4>
                             <p>{year}</p>
@@ -25,13 +32,13 @@ export const Movies = () => {
     );
 }
 
-export const Wrapper = styled.section`
+const Wrapper = styled.section`
     min-height: 100vh;
     display: flex;
     justify-content: space-around;
-    max-width: 90vw;
+    max-width: 60vw;
     flex-wrap: wrap;
-    margin-left: 5rem;
+    margin-left: 22rem;
     
     .movie-card {
         position: relative;
@@ -62,4 +69,21 @@ export const Wrapper = styled.section`
     .movie-card:hover .movie-info {
         transform: translateY(0);
     }
+`
+
+const Loading = styled.div`
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto;
+  margin-top: 10rem;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  border-top-color: var(--clr-primary-5);
+  animation: spinner 0.6s linear infinite;
+
+  @keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
 `

@@ -7,6 +7,7 @@ export const Search = () => {
     return (
         <>
             <SearchForm onSubmit={(e) => e.preventDefault()}>
+                <h1 className='title'>Search Movies</h1>
                 <input
                     type='text'
                     placeholder='search a movie'
@@ -22,7 +23,7 @@ const SearchForm = styled.form`
     width: 600px;
     margin: 0 auto;
     margin-top: 5rem;
-    margin-left: 10rem;
+    margin-left: 24.5rem;
     input {
         position: relative;
         top: 0;
@@ -34,5 +35,12 @@ const SearchForm = styled.form`
         outline: none;
         box-shadow: 0px 5px 0px 0px rgba(76,148,255,0.99);
         margin-bottom: 5rem;
+        color: #697C8E;
+    }
+
+    .title {
+        letter-spacing: 3px;
+        color: #112A42;
+        font-size: 300% ;
     }
 `
