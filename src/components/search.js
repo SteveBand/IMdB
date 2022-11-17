@@ -71,7 +71,7 @@ const SearchForm = styled.form`
     }
 
     input {
-      width: 100%;
+      width: 80%;
       font-size: 200%;
       background-color: white;
       box-shadow: 0px 3px 0px 0px rgba(76, 148, 255, 0.7);
@@ -90,7 +90,7 @@ const SearchForm = styled.form`
     }
 
     input {
-      width: 100%;
+      width: 80%;
       font-size: 200%;
       background-color: white;
       box-shadow: 0px 3px 0px 0px rgba(76, 148, 255, 0.7);
@@ -108,7 +108,7 @@ const SearchForm = styled.form`
     }
 
     input {
-      width: 100%;
+      width: 80%;
       font-size: 150%;
       background-color: white;
       box-shadow: 0px 3px 0px 0px rgba(76, 148, 255, 0.7);
