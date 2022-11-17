@@ -6,37 +6,50 @@ export const Search = () => {
 
   return (
     <>
-      <SearchForm onSubmit={(e) => e.preventDefault()}>
-        <h1 className="title">Search Movies</h1>
-        <input
-          type="text"
-          placeholder="search a movie"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-          }}
-        />
-      </SearchForm>
+      <Nav>
+        <SearchForm onSubmit={(e) => e.preventDefault()}>
+          <h1 className="title">Search Movies</h1>
+          <input
+            type="text"
+            placeholder="search a movie"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+            }}
+          />
+        </SearchForm>
+      </Nav>
     </>
   );
 };
+
+const Nav = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  place-self: center;
+  margin-bottom: 15%;
+`;
 
 const SearchForm = styled.form`
   width: 600px;
   margin: 0 auto;
   margin-top: 5rem;
-  margin-left: 24.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
   input {
     position: relative;
     top: 0;
     padding: 1rem;
-    width: 500px;
+    width: 100%;
     border: none;
     background-color: transparent;
-    font-size: 1.5rem;
+    font-size: 150%;
     outline: none;
     box-shadow: 0px 5px 0px 0px rgba(76, 148, 255, 0.99);
-    margin-bottom: 5rem;
     color: #697c8e;
   }
 
@@ -46,102 +59,58 @@ const SearchForm = styled.form`
     font-size: 300%;
   }
 
-  @media screen and (max-width: 1000px) {
-    margin-left: 12rem;
-    width: 700px;
-    height: 380px;
-
-    .title {
-      font-size: 5rem;
-      margin-left: -1rem;
-    }
-
-    input {
-      width: 550px;
-      font-size: 3.5rem;
-      box-shadow: 0px 8px 0px 0px rgba(76, 148, 255, 0.99);
-    }
-  }
-
-  @media screen and (max-width: 900px){
-    margin-left: 11.5rem;
-
-    .title {
-      font-size: 4rem;
-      letter-spacing: 4px;
-    }
-
-    input{
-      width: 500px;
-      font-size: 3rem;
-    }
-  }
-
-  @media screen and (max-width: 800px){
-    margin-left: 8rem;
-
-    .title {
-      font-size: 4rem;
-      letter-spacing: 6px;
-    }
-
-    input {
-      font-size: 2.5rem;
-    }
-  }
-
-  @media screen and (min-width: 320px) and (max-width: 480px) {
-    margin-left: 5rem;
+  @media screen and (max-width: 1360px) {
+    justify-content: center;
     margin-top: 2.5rem;
-    width: 240px;
-    margin-bottom: -1rem;
+    width: 80%;
+    height: 10rem;
 
     .title {
-      letter-spacing: 1px;
-      font-size: 180%;
-      margin-left: 0.5rem;
+      letter-spacing: 5px;
+      font-size: 330%;
     }
 
     input {
-      margin-left: -2rem;
-      width: 250px;
-      font-size: 1.2rem;
+      width: 100%;
+      font-size: 200%;
       background-color: white;
       box-shadow: 0px 3px 0px 0px rgba(76, 148, 255, 0.7);
     }
   }
 
-  @media screen and (min-width: 410px) and (max-width: 500px) {
-    width: max-content;
-    margin-left: 6rem;
-
-    input {
-      margin-left: -3rem;
-      width: 300px;
-    }
+  @media screen and (max-width: 992px) {
+    justify-content: center;
+    margin-top: 2.5rem;
+    width: 80%;
+    height: 10rem;
 
     .title {
+      letter-spacing: 5px;
+      font-size: 330%;
+    }
+
+    input {
+      width: 100%;
       font-size: 200%;
-      letter-spacing: 2.5px;
+      background-color: white;
+      box-shadow: 0px 3px 0px 0px rgba(76, 148, 255, 0.7);
     }
   }
 
-  @media screen and (max-width: 300px) {
-    margin-left: 2.2rem;
+  @media screen and (max-width: 480px) {
+    justify-content: center;
     margin-top: 2.5rem;
-    width: max-content;
-    height: 150px;
+    width: 80%;
+
     .title {
       letter-spacing: 1px;
       font-size: 180%;
     }
 
     input {
-      margin-left: -0.65rem;
-      width: 200px;
-      box-shadow: none;
+      width: 100%;
+      font-size: 150%;
       background-color: white;
-      outline-color: orange;
       box-shadow: 0px 3px 0px 0px rgba(76, 148, 255, 0.7);
     }
   }

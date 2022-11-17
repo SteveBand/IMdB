@@ -1,4 +1,3 @@
-import { findByTitle, getByTitle } from "@testing-library/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -12,34 +11,43 @@ export const Movies = () => {
   }
 
   return (
-    <Wrapper>
-      {movies.map((movie) => {
-        const { Title: title, Year: year, imdbID: id, Poster: img } = movie;
-        return (
-          <Link className="movie-card" to={`/movies/${id}`} key={id}>
-            <img src={img === "N/A" ? noImg : img} alt={title} />
-            <div className="movie-info">
-              <h4>{title}</h4>
-              <p>{year}</p>
-            </div>
-          </Link>
-        );
-      })}
-    </Wrapper>
+    <MovieSection>
+      <Wrapper>
+        {movies.map((movie) => {
+          const { Title: title, Year: year, imdbID: id, Poster: img } = movie;
+          return (
+            <Link className="movie-card" to={`/movies/${id}`} key={id}>
+              <img src={img === "N/A" ? noImg : img} alt={title} />
+              <div className="movie-info">
+                <h4>{title}</h4>
+                <p>{year}</p>
+              </div>
+            </Link>
+          );
+        })}
+      </Wrapper>
+    </MovieSection>
   );
 };
 
+const MovieSection = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 const Wrapper = styled.section`
   min-height: 100vh;
+  max-width: 65vw;
   display: flex;
-  justify-content: space-around;
-  max-width: 60vw;
+  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  margin-left: 22rem;
 
   .movie-card {
     position: relative;
-    width: 300px;
+    margin: 0 1rem;
+    width: 30%;
     margin-bottom: 4rem;
     overflow: hidden;
     border-radius: 0;
@@ -69,71 +77,61 @@ const Wrapper = styled.section`
     transform: translateY(0);
   }
 
-  @media screen and (max-width: 1000px) {
-    margin-left: 11.5rem;
+  @media screen and (max-width: 1360px) {
+    display: flex;
+    justify-content: center;
     .movie-card {
-      width: 600px;
-    }
-
-    img {
-      width: 600px;
-      height: 850px;
-    }
-  }
-
-  @media screen and (max-width: 900px) {
-    margin-left: 11rem;
-    
-    .movie-card {
-      width: 700px;
-      height: 800px;
+      width: 100%;
+      height: 10%;
     }
 
     img {
       height: 100%;
-      width: 100%;
     }
-
     .movie-info {
       transform: translateY(0);
-      height: auto;
-      h4 , p {
-        font-size: 2.7rem;
+
+      h4,
+      p {
+        font-size: 300%;
+        letter-spacing: 5px;
         width: 90%;
-        letter-spacing: 1px;
       }
     }
   }
 
-  @media screen and (max-width: 800px){
-    margin-left: 10rem;
-
+  @media screen and (max-width: 992px) {
+    display: flex;
+    justify-content: center;
     .movie-card {
-      width: 500px;
-      height: 600px;
+      width: 100%;
+      height: 10%;
     }
 
     img {
-      width: 100%;
       height: 100%;
     }
-
     .movie-info {
       transform: translateY(0);
 
-      font-size: 2.2rem;
-      letter-spacing: 1px;
-      width: 100%;
+      h4,
+      p {
+        font-size: 200%;
+        letter-spacing: 1px;
+        width: 90%;
+      }
     }
   }
 
-  @media screen and (min-width: 410px) and (max-width: 500px) {
-    max-width: 75vw;
+  @media screen and (max-width: 480px) {
+    max-width: 80vw;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 
     .movie-card {
-      width: 270px;
-      height: 360px;
+      width: 80%;
+      height: 400px;
       border-radius: 2%;
     }
 
@@ -147,57 +145,7 @@ const Wrapper = styled.section`
 
       h4,
       p {
-        font-size: 112%;
-        letter-spacing: 1px;
-        width: 90%;
-      }
-    }
-  }
-
-  @media screen and (min-width: 320px) and (max-width: 410px) {
-    max-width: 60vw;
-    margin: 0 auto;
-
-    .movie-card {
-      width: 200px;
-      margin-bottom: 2rem;
-    }
-
-    img {
-      width: 200px;
-      height: 320px;
-    }
-
-    .movie-info {
-      transform: translateY(0);
-      h4,
-      p {
-        font-size: 112%;
-        letter-spacing: 1px;
-        width: 90%;
-      }
-    }
-  }
-  @media screen and (max-width: 300px) {
-    margin-left: 0rem;
-    max-width: 100%;
-    .movie-card {
-      width: 180px;
-      height: 320px;
-    }
-
-    .movie-info {
-      height: 60px;
-      padding: 0 auto;
-      transform: translateY(-20%);
-    }
-
-    .movie-info {
-      transform: translateY(-0%);
-      height: fit-content;
-      h4,
-      p {
-        font-size: 112%;
+        font-size: 23px;
         letter-spacing: 1px;
         width: 90%;
       }
