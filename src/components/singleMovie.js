@@ -10,6 +10,7 @@ export const SingleMovie = () => {
 
 
     const handleFetch = async (url) => {
+        setLoading(true);
         try {
             const response = await fetch(url)
             const data = await response.json();
@@ -24,9 +25,11 @@ export const SingleMovie = () => {
 
     useEffect(() => {
         handleFetch(`${API_ENDPOINT}&i=${id}`)
-        console.log(movie)
-        console.log(id)
     }, [id])
+
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     const { Title, Year, Rated, Genre, Language, Poster, Plot} = movie;
     return (
@@ -97,4 +100,21 @@ const Wrapper = styled.section`
         padding: 5px 30px;
         border-radius: 8%;
     }
+`
+
+const Loading = styled.div`
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto;
+  margin-top: 10rem;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  border-top-color: #49A6E9;
+  animation: spinner 0.6s linear infinite;
+
+  @keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
 `
